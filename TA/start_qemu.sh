@@ -64,7 +64,7 @@ sudo route add default gw 192.168.1.1
 ##192.168.1.2(Host)-> 192.168.1.1(router-brlan)--172.16.16.200(router-brwan->172.16.16.234(Router's Gateway)-->  4.2.2.2
 
 ##step 4: Check the host connectivity to gateway
-ping -c 1 192.168.1.1 >> qemu.log
+ping -c 1 192.168.1.1 >> $LOGPATH/qemu.log
         if [ `echo $?` -eq 0 ]
         then
                 echo "Test1### Pass ###  Host's Gateway(Router-192.168.1.1)  is reachable " >> logs/Test_Result.log
@@ -88,7 +88,7 @@ ssh -q -o StrictHostKeyChecking=no  root@192.168.1.1 ping -c 1 4.2.2.2
 	echo "Test3### Fail ###Internet from is Timed out fromRouter ........ " >> logs/Test_Result.log
         fi
 ##step 4: Check the host connectivity to internet
-ping -c 1 4.2.2.2 >> qemu.log
+ping -c 1 4.2.2.2 >> $LOGPATH/qemu.log
         if [ `echo $?` -eq 0 ]
         then
                 echo "Test4### Pass ###Internet is reachable from host " >> logs/Test_Result.log
